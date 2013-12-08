@@ -1,19 +1,19 @@
--- ƒ†[ƒU[ƒAƒJƒEƒ“ƒg‚Ìì¬
+-- ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®ä½œæˆ
 insert into useraccount (id, name)
     values (UNHEX(REPLACE(UUID() ,'-', '')), "testA");
 
--- ƒ†[ƒU[ƒAƒJƒEƒ“ƒg‚ÌŠm”F
+-- ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚¢ã‚«ã‚¦ãƒ³ãƒˆã®ç¢ºèª
 
 select HEX(id), name from useraccount;
 
--- ƒpƒXƒ[ƒh‚Ì‘}“ü
+-- ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®æŒ¿å…¥
 insert into password (id, userid, password) 
 values ( 
 	UNHEX(REPLACE(UUID() ,'-', '')),
 	(select id from useraccount where name = 'testA'), 
 	MD5('passpass')
 )
--- ƒpƒXƒ[ƒh‚ÌŠm”F
+-- ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã®ç¢ºèª
 select HEX(id), HEX(userid), password from password;
 
 set @username = 'testA';
