@@ -22,3 +22,5 @@ select useraccount.name, password.password
 from useraccount, password
 where useraccount.id = password.userid and
       useraccount.name = @username
+
+-- --
